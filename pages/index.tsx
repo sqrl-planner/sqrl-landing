@@ -12,7 +12,7 @@ import { useState } from "react"
 import Modal from "react-modal"
 import InterestModal from "../components/InterestModal"
 
-import Squirrel from "../public/assets/logos/squirrel_2.png"
+import SquirrelSvg from "../public/assets/logos/squirrel.svg"
 
 import styles from "../styles/Home.module.css"
 
@@ -73,7 +73,7 @@ const Home: NextPage = () => {
             transition={{ delay: 1, duration: 0.3 }}
             className="w-24 h-24 rounded-full shadow-2xl mb-4"
           >
-            <Image src={Squirrel} layout="intrinsic" alt="Logo" />
+            <Image src={SquirrelSvg} layout="intrinsic" alt="Logo" />
           </motion.div>
           <motion.h1
             initial={{
