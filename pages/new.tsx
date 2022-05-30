@@ -25,7 +25,7 @@ const New: NextPage = () => {
               </div>
               <div className="mt-6">
                 <h1 className="mt-4 text-5xl  font-extrabold text-gray-900 tracking-tight">
-                  The oh-so desparately needed planner
+                  The oh-so desparately needed planner.
                 </h1>
                 <p className="mt-6 text-2xl font-medium text-gray-900 text-opacity-70 w-full max-w-ptahiti">
                   Because let's face it, Acorn is shit. A modern timetable
