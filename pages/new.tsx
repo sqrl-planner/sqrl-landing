@@ -36,29 +36,48 @@ const New: NextPage = () => {
               <div></div>
               <div className="mt-20">
                 <div className="flex flex-wrap gap-2 text-xl font-medium">
-                  <span className="text-black text-opacity-70">
+                  <motion.span
+                    className="text-black text-opacity-70"
+                    initial={{ opacity: 0, }}
+                    animate={{ opacity: 1, }}
+                    transition={{ delay: 1.8, duration: 0.3 }}
+                  >
                     Sqrl is{" "}
                     <span className="text-black text-opacity-50">(almost)</span>{" "}
                     here.
-                  </span>
-                  <a
+                  </motion.span>
+                  <motion.a
                     href="https://staging.sqrlplanner.com"
                     className="font-medium text-tahiti-700 group"
+                    initial={{ opacity: 0, }}
+                    animate={{ opacity: 1, }}
+                    transition={{ delay: 1.8, duration: 0.3 }}
                   >
                     Try the alpha release -&gt;
-                  </a>
+                  </motion.a>
                 </div>
               </div>
               <div className="mt-6">
-                <h1 className="mt-4 text-5xl  font-extrabold text-gray-900 tracking-tight">
+                <motion.h1
+                  className="mt-4 text-5xl  font-extrabold text-gray-900 tracking-tight"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                >
                   The oh-so desperately needed planner.
-                </h1>
-                <p className="mt-6 text-2xl font-medium text-gray-900 text-opacity-70 w-full max-w-ptahiti">
+                </motion.h1>
+                <motion.p
+                  className="mt-6 text-2xl font-medium text-gray-900
+                  text-opacity-70 w-full max-w-ptahiti"
+                  initial={{ opacity: 0, }}
+                  animate={{ opacity: 1, }}
+                  transition={{ delay: 1, duration: 0.5 }}
+                >
                   Because let's face it, Acorn is shit. A modern timetable
                   planner for the University of Toronto.
-                </p>
+                </motion.p>
               </div>
-              <form
+              <motion.form
                 className="mt-12 sm:max-w-lg sm:w-full sm:flex"
                 onSubmit={(e) => {
                   e.preventDefault()
@@ -67,6 +86,9 @@ const New: NextPage = () => {
                   captchaRef.current.execute()
                   setLoading(true)
                 }}
+                initial={{ opacity: 0, }}
+                animate={{ opacity: 1, }}
+                transition={{ delay: 1.8, duration: 0.3 }}
               >
                 <div className="min-w-0 w-full">
                   <label htmlFor="email" className="sr-only">
@@ -109,13 +131,23 @@ const New: NextPage = () => {
                     )}
                   </button>
                 </div>
-              </form>
-              <p className="mt-2 text-sm text-gray-500">
+              </motion.form>
+              <motion.p
+                className="mt-2 text-sm text-gray-500"
+                initial={{ opacity: 0, }}
+                animate={{ opacity: 1, }}
+                transition={{ delay: 1.8, duration: 0.3 }}
+              >
                 We'll send you an email when Sqrl is ready.
-              </p>
+              </motion.p>
             </div>
 
-            <div className="sm:mx-auto sm:max-w-3xl sm:px-6">
+            <motion.div
+              className="sm:mx-auto sm:max-w-3xl sm:px-6"
+              initial={{ opacity: 0, }}
+              animate={{ opacity: 1, }}
+              transition={{ delay: 1.8, duration: 0.5 }}
+            >
               <div className="py-12 sm:relative sm:mt-12 sm:py-16 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
                 <div className="hidden sm:block">
                   <div className="absolute inset-y-0 left-1/2 w-screen bg-gray-50 rounded-l-3xl lg:left-80 lg:right-0 lg:w-full" />
@@ -152,7 +184,9 @@ const New: NextPage = () => {
                     />
                   </svg>
                 </div>
-                <div className="relative pl-4 mr-40 sm:mx-auto sm:max-w-3xl sm:px-0 lg:max-w-none lg:h-full lg:pl-12 sm:block hidden">
+                <div
+                  className="relative pl-4 mr-40 sm:mx-auto sm:max-w-3xl sm:px-0 lg:max-w-none lg:h-full lg:pl-12 sm:block hidden"
+                >
                   <img
                     className="w-full rounded-md shadow-xl ring-1 ring-black ring-opacity-5 lg:h-full lg:w-auto lg:max-w-none"
                     src="/assets/app_preview.jpg"
@@ -160,7 +194,7 @@ const New: NextPage = () => {
                   />
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </main>
