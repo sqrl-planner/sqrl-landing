@@ -1,6 +1,32 @@
+import { motion } from "framer-motion"
+import React, {
+  Dispatch,
+  Fragment,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react"
 import { NextPage } from "next"
 
+import { Oval } from "react-loader-spinner"
+import HCaptcha from "@hcaptcha/react-hcaptcha"
+
+const isEmail = (email: string) => {
+  var re = /\S+@\S+\.\S+/
+  return re.test(email)
+}
+
 const New: NextPage = () => {
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
+  const [email, setEmail] = useState<string>("")
+
+  const [done, setDone] = useState(false)
+
+  const [token, setToken] = useState<string>("")
+  const captchaRef = useRef<HCaptcha>(null)
+
   return (
     <div className="bg-white">
       <main>
@@ -25,15 +51,24 @@ const New: NextPage = () => {
               </div>
               <div className="mt-6">
                 <h1 className="mt-4 text-5xl  font-extrabold text-gray-900 tracking-tight">
-                  The oh-so desparately needed planner.
+                  The oh-so desperately needed planner.
                 </h1>
                 <p className="mt-6 text-2xl font-medium text-gray-900 text-opacity-70 w-full max-w-ptahiti">
                   Because let's face it, Acorn is shit. A modern timetable
                   planner for the University of Toronto.
                 </p>
               </div>
-              <form action="#" className="mt-12 sm:max-w-lg sm:w-full sm:flex">
-                <div className="min-w-0 flex-1">
+              <form
+                className="mt-12 sm:max-w-lg sm:w-full sm:flex"
+                onSubmit={(e) => {
+                  e.preventDefault()
+                  if (!captchaRef.current) return
+
+                  captchaRef.current.execute()
+                  setLoading(true)
+                }}
+              >
+                <div className="min-w-0 w-full">
                   <label htmlFor="email" className="sr-only">
                     Email address
                   </label>
@@ -42,16 +77,36 @@ const New: NextPage = () => {
                     type="email"
                     className="block w-full border border-gray-300 rounded-md px-5 py-3 text-base text-gray-900 placeholder gray-500 shadow-sm focus:border-tahiti-600 focus:ring-tahiti-600"
                     placeholder="meric.gertler@mail.utoronto.ca"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
-                <div className="mt-4 sm:mt-0 sm:ml-3">
+                <div className="mt-4 sm:mt-0 sm:ml-3 w-1/2">
+                  <HCaptcha
+                    sitekey="dea9e383-ef63-4c40-b08f-27f38ba957b3"
+                    //   onLoad={onLoad}
+                    // @ts-ignore
+                    onVerify={setToken}
+                    onClose={() => {
+                      setToken("")
+                      setLoading(false)
+                    }}
+                    size="invisible"
+                    ref={captchaRef}
+                  />
                   <button
                     type="submit"
-                    className="block w-full rounded-md border border-transparent px-5 py-3 bg-tahiti-700-light text-base font-medium text-white shadow hover:bg-tahiti-700 focus:outline-none focus:ring-2 focus:ring-tahiti-700-light focus:ring-offset-2 sm:px-10"
+                    disabled={loading || !email || !isEmail(email)}
+                    className="block w-full rounded-md border border-transparent px-5 py-3 bg-tahiti-700-light text-base font-medium text-white shadow hover:bg-tahiti-700 focus:outline-none focus:ring-2 focus:ring-tahiti-700-light focus:ring-offset-2 flex flex-row items-center justify-center h-full"
                   >
-                    <span className="inline-flex items-center">
-                      Get updates
-                    </span>
+                    {loading ? (
+                      <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                    ) : (
+                      "Get updates"
+                    )}
                   </button>
                 </div>
               </form>
