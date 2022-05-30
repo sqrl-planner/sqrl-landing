@@ -75,13 +75,13 @@ const New: NextPage = () => {
                   <input
                     id="email"
                     type="email"
-                    className="block w-full border border-gray-300 rounded-md px-5 py-3 text-base text-gray-900 placeholder gray-500 shadow-sm focus:border-tahiti-600 focus:ring-tahiti-600"
+                    className="block w-full border border-gray-300 rounded-md px-5 py-3 text-base text-gray-900 placeholder gray-500 shadow-sm focus:border-tahiti-600 focus:ring-tahiti-600 sm:rounded-r-none"
                     placeholder="meric.gertler@mail.utoronto.ca"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
-                <div className="mt-4 sm:mt-0 sm:ml-3 w-1/2">
+                <div className="mt-4 sm:mt-0 sm:ml-0 w-1/2">
                   <HCaptcha
                     sitekey="dea9e383-ef63-4c40-b08f-27f38ba957b3"
                     //   onLoad={onLoad}
@@ -97,7 +97,7 @@ const New: NextPage = () => {
                   <button
                     type="submit"
                     disabled={loading || !email || !isEmail(email)}
-                    className="block w-full rounded-md border border-transparent px-5 py-3 bg-tahiti-700-light text-base font-medium text-white shadow hover:bg-tahiti-700 focus:outline-none focus:ring-2 focus:ring-tahiti-700-light focus:ring-offset-2 flex flex-row items-center justify-center h-full"
+                    className="w-full rounded-md border border-transparent px-5 py-3 bg-tahiti-700-light text-base font-medium text-white shadow hover:bg-tahiti-700 focus:outline-none focus:ring-2 focus:ring-tahiti-700-light focus:ring-offset-2 flex flex-row items-center justify-center  h-full sm:rounded-l-none"
                   >
                     {loading ? (
                       <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -105,7 +105,7 @@ const New: NextPage = () => {
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
                     ) : (
-                      "Get updates"
+                      "Get updates ->"
                     )}
                   </button>
                 </div>
@@ -152,7 +152,7 @@ const New: NextPage = () => {
                     />
                   </svg>
                 </div>
-                <div className="relative pl-4 mr-40 sm:mx-auto sm:max-w-3xl sm:px-0 lg:max-w-none lg:h-full lg:pl-12">
+                <div className="relative pl-4 mr-40 sm:mx-auto sm:max-w-3xl sm:px-0 lg:max-w-none lg:h-full lg:pl-12 sm:block hidden">
                   <img
                     className="w-full rounded-md shadow-xl ring-1 ring-black ring-opacity-5 lg:h-full lg:w-auto lg:max-w-none"
                     src="/assets/app_preview.jpg"
