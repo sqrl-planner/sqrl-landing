@@ -97,7 +97,7 @@ const New: NextPage = () => {
                   <button
                     type="submit"
                     disabled={loading || !email || !isEmail(email)}
-                    className="w-full rounded-md border border-transparent px-5 py-3 bg-tahiti-700-light text-base font-medium text-white shadow hover:bg-tahiti-700 focus:outline-none focus:ring-2 focus:ring-tahiti-700-light focus:ring-offset-2 flex flex-row items-center justify-center  h-full sm:rounded-l-none"
+                    className="w-full rounded-md border border-transparent px-5 py-3 bg-tahiti-700-light text-base font-medium text-white shadow focus:outline-none focus:ring-2 focus:ring-tahiti-700-light focus:ring-offset-2 flex flex-row items-center justify-center  h-full sm:rounded-l-none not:disabled:hover:bg-tahiti-700 disabled:opacity-80"
                   >
                     {loading ? (
                       <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -105,7 +105,7 @@ const New: NextPage = () => {
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
                     ) : (
-                      "Get updates ->"
+                      "Get updates"
                     )}
                   </button>
                 </div>
