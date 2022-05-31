@@ -89,7 +89,7 @@ const New: NextPage = () => {
                     // transition={{ delay: 1, duration: 0.5 }}
                     transition={{ duration: 0.5 }}
                   >
-                    Because let's face it, Acorn is shit. A modern timetable
+                    {"Because let's face it, Acorn is shit. A modern timetable"}
                     planner for the University of Toronto.
                   </motion.p>
                 </div>
@@ -151,7 +151,7 @@ const New: NextPage = () => {
                             cy="12"
                             r="10"
                             stroke="currentColor"
-                            stroke-width="4"
+                            strokeWidth="4"
                           ></circle>
                           <path
                             className="opacity-75"
@@ -172,7 +172,7 @@ const New: NextPage = () => {
                   // transition={{ delay: 1.8, duration: 0.3 }}
                   transition={{ duration: 0.5 }}
                 >
-                  We'll send you an email when Sqrl is ready.
+                  {"We'll send you an email when Sqrl is ready."}
                 </motion.p>
               </div>
 
