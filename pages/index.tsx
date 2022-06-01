@@ -28,7 +28,7 @@ const toastVariants = {
     opacity: 1,
     y: 0,
   },
- }
+}
 
 const New: NextPage = () => {
   const [loading, setLoading] = useState(false)
@@ -84,6 +84,18 @@ const New: NextPage = () => {
         />
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
+      {process.env.NODE_ENV === "development" && (
+        // Development buttons
+        <div><button
+          onClick={(e) => {
+            e.preventDefault()
+            setDone(true)
+          }}
+          className="fixed p-2 z-10 m-2"
+        >
+          Show done toast
+        </button></div>
+      )}
       <motion.div
         id="toast-default"
         initial="hidden"
@@ -155,8 +167,7 @@ const New: NextPage = () => {
                     // transition={{ delay: 1, duration: 0.5 }}
                     transition={{ duration: 0.5 }}
                   >
-                    {"Because let's face it, Acorn is shit. A modern timetable"}
-                    planner for the University of Toronto.
+                    {"Because let's face it, Acorn is shit. A modern timetable"} planner for the University of Toronto.
                   </motion.p>
                 </div>
                 <motion.form
@@ -231,16 +242,6 @@ const New: NextPage = () => {
                       )}
                     </button>
                   </div>
-                  {process.env.NODE_ENV === "development" && (
-                    <button
-                      onClick={(e) => {
-                        e.preventDefault()
-                        setDone(true)
-                      }}
-                    >
-                      done
-                    </button>
-                  )}
                 </motion.form>
                 <motion.p
                   className="mt-2 text-sm text-gray-500"
