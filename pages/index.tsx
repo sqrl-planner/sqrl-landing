@@ -189,7 +189,7 @@ const New: NextPage = () => {
                   </motion.p>
                 </div>
                 <motion.form
-                  className="mt-10 sm:max-w-lg sm:w-full flex"
+                  className="mt-10 sm:max-w-lg sm:w-full flex sm:flex-row flex-col"
                   onSubmit={(e) => {
                     e.preventDefault()
                     if (!captchaRef.current) return
@@ -202,7 +202,7 @@ const New: NextPage = () => {
                   // transition={{ delay: 1.8, duration: 0.3 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <div className="min-w-0 w-full shadow">
+                  <div className="w-full sm:max-w-xs shadow">
                     <label htmlFor="email" className="sr-only">
                       Email address
                     </label>
@@ -232,7 +232,7 @@ const New: NextPage = () => {
                     <button
                       type="submit"
                       disabled={loading || !email || !isEmail(email)}
-                      className="w-full rounded-md border border-transparent px-5 py-3 bg-tahiti-700-light text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-tahiti-700-light focus:ring-offset-2 flex flex-row items-center justify-center  h-12 sm:rounded-l-none not:disabled:hover:bg-tahiti-700 disabled:opacity-80 shadow"
+                      className="w-40 rounded-md border border-transparent px-5 py-3 bg-tahiti-700-light text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-tahiti-700-light focus:ring-offset-2 flex flex-row items-center justify-center h-12 sm:rounded-l-none not:disabled:hover:bg-tahiti-700 disabled:opacity-80 shadow"
                     >
                       {loading ? (
                         <svg
