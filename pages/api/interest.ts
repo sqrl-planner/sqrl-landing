@@ -19,6 +19,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<any>) => {
 
   if (!success) return res.status(500).json({ error: "Invalid token" })
 
+  if (process.env.NODE_ENV === "development")
+    return res.status(200).json({ email: req.body.email, mode: "development" })
+
   const addToMailingList = mailjet
     .post("contactslist", { version: "v3" })
     .id(process.env.MJ_LIST_ID)

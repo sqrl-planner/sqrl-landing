@@ -1,4 +1,5 @@
 import { motion } from "framer-motion"
+import { FaEnvelope } from "react-icons/fa"
 import React, {
   Dispatch,
   Fragment,
@@ -18,6 +19,17 @@ const isEmail = (email: string) => {
   return re.test(email)
 }
 
+const toastVariants = {
+  hidden: {
+    opacity: 0,
+    y: "50%",
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+  },
+ }
+
 const New: NextPage = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
@@ -27,6 +39,40 @@ const New: NextPage = () => {
 
   const [token, setToken] = useState<string>("")
   const captchaRef = useRef<HCaptcha>(null)
+
+  useEffect(() => {
+    if (!token || !email) return
+
+    fetch("/api/interest", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, token }),
+    })
+      .then((res) => {
+        setLoading(false)
+
+        if (res.status !== 200) return setError(true)
+
+        setError(false)
+        setDone(true)
+      })
+      .catch((error) => alert(error))
+  }, [token, email])
+
+  const [showToast, setShowToast] = useState<boolean>(false)
+
+  useEffect(() => {
+    if (!done) return
+
+    setShowToast(true)
+
+    setTimeout(() => {
+      setShowToast(false)
+      setDone(false)
+    }, 7000)
+  }, [done])
 
   return (
     <React.Fragment>
@@ -38,6 +84,26 @@ const New: NextPage = () => {
         />
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
+      <motion.div
+        id="toast-default"
+        initial="hidden"
+        animate={showToast ? "show" : email === "" ? "hidden" : "exit"}
+        variants={toastVariants}
+        transition={{
+          ease: "easeInOut",
+          duration: 0.4,
+        }}
+        className="fixed m-auto inset-x-0 bottom-6 z-10 flex items-center w-full max-w-sm p-4 text-green-900 bg-green-100 rounded-lg shadow-lg"
+        role="alert"
+      >
+        <div className="self-start text-lg px-1">
+          <FaEnvelope />
+        </div>
+        <div className="px-2 text-md font-normal">
+          <p className="font-semibold">Thanks for your interest!</p>
+          Check your email for a confirmation.
+        </div>
+      </motion.div>
       <div className="bg-white">
         <main>
           <div className="pt-8 overflow-hidden sm:pt-12 lg:relative lg:py-48">
@@ -117,6 +183,7 @@ const New: NextPage = () => {
                       className="block w-full border border-gray-300 rounded-md px-5 py-3 text-base text-gray-900 placeholder gray-500 shadow-sm focus:border-tahiti-600 focus:ring-tahiti-600 sm:rounded-r-none"
                       placeholder="meric.gertler@mail.utoronto.ca"
                       value={email}
+                      disabled={loading}
                       onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
@@ -164,6 +231,16 @@ const New: NextPage = () => {
                       )}
                     </button>
                   </div>
+                  {process.env.NODE_ENV === "development" && (
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault()
+                        setDone(true)
+                      }}
+                    >
+                      done
+                    </button>
+                  )}
                 </motion.form>
                 <motion.p
                   className="mt-2 text-sm text-gray-500"
