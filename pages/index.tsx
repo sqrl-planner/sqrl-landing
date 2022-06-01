@@ -151,13 +151,19 @@ const New: NextPage = () => {
                     </motion.span>
                     <motion.a
                       href="https://staging.sqrlplanner.com"
-                      className="font-medium text-tahiti-700 group"
+                      className="font-medium text-tahiti-700 group flex items-center"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       // transition={{ delay: 1.8, duration: 0.3 }}
                       transition={{ duration: 0.5 }}
                     >
-                      Try the alpha release -&gt;
+                      Try the alpha release 
+                      <div className="inline-flex flex-col relative justify-center w-3 h-3 ml-1 group-hover:translate-x-2 transition">
+                        <span className="group-hover:scale-x-150 transition absolute origin-right w-full scale-x-0 insex-y-0 m-auto right-[1px] h-[2px] bg-tahiti-700"></span>
+                        <span className=" origin-right w-full relative top-[1.25px] h-[2px] rotate-45 bg-tahiti-700"></span>
+                        <span className=" origin-right w-full relative bottom-[1.25px] h-[2px] -rotate-45 bg-tahiti-700"></span>
+                      </div>
+                      {/* <span className="group-hover:translate-x-1 inline-block transition">-&gt;</span> */}
                     </motion.a>
                   </div>
                 </div>
