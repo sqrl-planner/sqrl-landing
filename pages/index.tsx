@@ -151,7 +151,7 @@ const New: NextPage = () => {
                 </div>
                 <div className="mt-6">
                   <motion.h1
-                    className="mt-4 text-5xl  font-extrabold text-gray-900 tracking-tight"
+                    className="mt-4 text-5xl font-extrabold text-gray-900 tracking-tight"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     // transition={{ duration: 0.5 }}
@@ -160,18 +160,18 @@ const New: NextPage = () => {
                     The oh-so desperately needed planner.
                   </motion.h1>
                   <motion.p
-                    className="mt-6 text-2xl font-medium text-gray-900
+                    className="mt-4 text-2xl font-medium text-gray-900
                   text-opacity-70 w-full max-w-ptahiti"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     // transition={{ delay: 1, duration: 0.5 }}
                     transition={{ duration: 0.5 }}
                   >
-                    {"Because let's face it, Acorn is shit. A modern timetable"} planner for the University of Toronto.
+                    {"Because let's face it, Acorn is shit. A modern timetable planner for the University of Toronto."}
                   </motion.p>
                 </div>
                 <motion.form
-                  className="mt-12 sm:max-w-lg sm:w-full sm:flex"
+                  className="mt-10 sm:max-w-lg sm:w-full sm:flex"
                   onSubmit={(e) => {
                     e.preventDefault()
                     if (!captchaRef.current) return
