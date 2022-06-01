@@ -86,15 +86,27 @@ const New: NextPage = () => {
       </Head>
       {process.env.NODE_ENV === "development" && (
         // Development buttons
-        <div><button
-          onClick={(e) => {
-            e.preventDefault()
-            setDone(true)
-          }}
-          className="fixed p-2 z-10 m-2"
+        <div
+          className="fixed p-2 z-10 m-2 flex gap-4"
         >
-          Show done toast
-        </button></div>
+          <button
+            onClick={(e) => {
+              e.preventDefault()
+              setDone(true)
+            }}
+          >
+            Show done toast
+          </button>
+          <button
+            onClick={(e) => {
+              e.preventDefault()
+              setLoading((prev) => !prev)
+            }}
+          >
+            Toggle loading
+          </button>
+
+        </div>
       )}
       <motion.div
         id="toast-default"
@@ -171,7 +183,7 @@ const New: NextPage = () => {
                   </motion.p>
                 </div>
                 <motion.form
-                  className="mt-10 sm:max-w-lg sm:w-full sm:flex"
+                  className="mt-10 sm:max-w-lg sm:w-full flex"
                   onSubmit={(e) => {
                     e.preventDefault()
                     if (!captchaRef.current) return
@@ -184,14 +196,14 @@ const New: NextPage = () => {
                   // transition={{ delay: 1.8, duration: 0.3 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <div className="min-w-0 w-full">
+                  <div className="min-w-0 w-full shadow">
                     <label htmlFor="email" className="sr-only">
                       Email address
                     </label>
                     <input
                       id="email"
                       type="email"
-                      className="block w-full border border-gray-300 rounded-md px-5 py-3 text-base text-gray-900 placeholder gray-500 shadow-sm focus:border-tahiti-600 focus:ring-tahiti-600 sm:rounded-r-none"
+                      className="block w-full border border-gray-300 rounded-md px-5 py-3 text-base text-gray-900 placeholder gray-500 focus:border-tahiti-600 focus:ring-tahiti-600 sm:rounded-r-none h-12"
                       placeholder="meric.gertler@mail.utoronto.ca"
                       value={email}
                       disabled={loading}
@@ -214,7 +226,7 @@ const New: NextPage = () => {
                     <button
                       type="submit"
                       disabled={loading || !email || !isEmail(email)}
-                      className="w-full rounded-md border border-transparent px-5 py-3 bg-tahiti-700-light text-base font-medium text-white shadow focus:outline-none focus:ring-2 focus:ring-tahiti-700-light focus:ring-offset-2 flex flex-row items-center justify-center  h-full sm:rounded-l-none not:disabled:hover:bg-tahiti-700 disabled:opacity-80"
+                      className="w-full rounded-md border border-transparent px-5 py-3 bg-tahiti-700-light text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-tahiti-700-light focus:ring-offset-2 flex flex-row items-center justify-center  h-12 sm:rounded-l-none not:disabled:hover:bg-tahiti-700 disabled:opacity-80 shadow"
                     >
                       {loading ? (
                         <svg
