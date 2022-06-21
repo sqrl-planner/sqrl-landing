@@ -183,7 +183,7 @@ const New: NextPage = () => {
                       // transition={{ delay: 1.8, duration: 0.3 }}
                       transition={{ duration: 0.5 }}
                     >
-                      We're proudly open source.
+                      We&apos;re proudly open source.
                     </motion.span>
                     <div className="mr-auto">
                       <motion.a
