@@ -9,6 +9,7 @@ import React, {
   useState,
 } from "react"
 import { NextPage } from "next"
+import { Image } from "next/image"
 
 import { Oval } from "react-loader-spinner"
 import HCaptcha from "@hcaptcha/react-hcaptcha"
@@ -227,7 +228,7 @@ const New: NextPage = () => {
                 </div>
                 <div className="mt-10">
                   <motion.div
-                      className="relative flex flex-row space-x-8 sm:max-w-lg sm:w-full"
+                    className="relative flex flex-row space-x-8 sm:max-w-lg sm:w-full"
                     initial="visible"
                     animate={showGetUpdates ? "hidden" : "visible"}
                     transition={{ duration: 0.5 }}
@@ -252,12 +253,12 @@ const New: NextPage = () => {
                                    flex flex-row items-center justify-center h-12
                                    shadow group"
                       >
-                          <span>Try now</span>
-                          <div className="inline-flex flex-col relative justify-center w-2.5 h-2.5 ml-2 group-hover:translate-x-2 transition">
-                            <span className="group-hover:scale-x-150 transition absolute origin-right w-full scale-x-0 insex-y-0 m-auto right-[1px] h-[2px] bg-white"></span>
-                            <span className=" origin-right w-full relative top-[1.25px] h-[2px] rotate-45 bg-white"></span>
-                            <span className=" origin-right w-full relative bottom-[1.25px] h-[2px] -rotate-45 bg-white"></span>
-                          </div>
+                        <span>Try now</span>
+                        <div className="inline-flex flex-col relative justify-center w-2.5 h-2.5 ml-2 group-hover:translate-x-2 transition">
+                          <span className="group-hover:scale-x-150 transition absolute origin-right w-full scale-x-0 insex-y-0 m-auto right-[1px] h-[2px] bg-white"></span>
+                          <span className=" origin-right w-full relative top-[1.25px] h-[2px] rotate-45 bg-white"></span>
+                          <span className=" origin-right w-full relative bottom-[1.25px] h-[2px] -rotate-45 bg-white"></span>
+                        </div>
                       </button>
                     </a>
 
@@ -415,7 +416,7 @@ const New: NextPage = () => {
                     </svg>
                   </div>
                   <div className="relative pl-4 mr-40 sm:mx-auto sm:max-w-3xl sm:px-0 lg:max-w-none lg:h-full lg:pl-12 sm:block hidden">
-                    <img
+                    <Image
                       className="w-full rounded-md shadow-xl ring-1 ring-black ring-opacity-5 lg:h-full lg:w-auto lg:max-w-none"
                       src={isDark ? "/assets/sqrl_dark.png" : "/assets/sqrl_light.png"}
                       alt=""
