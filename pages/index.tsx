@@ -9,7 +9,7 @@ import React, {
   useState,
 } from "react"
 import { NextPage } from "next"
-import { Image } from "next/image"
+import Image from "next/image"
 
 import { Oval } from "react-loader-spinner"
 import HCaptcha from "@hcaptcha/react-hcaptcha"
