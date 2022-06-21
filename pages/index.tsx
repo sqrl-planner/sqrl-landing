@@ -80,8 +80,11 @@ const New: NextPage = () => {
   const [isDark, setIsDark] = useState<boolean>(true)
 
   useEffect(() => {
-    document.querySelector("body").classList.add("dark:bg-slate-900")
-    document.querySelector("body").classList.add("bg-white")
+    const body = document.querySelector("body");
+    if (body) {
+      body.classList.add("dark:bg-slate-900")
+      body.classList.add("bg-white")
+    }
   });
 
   useEffect(() => {
