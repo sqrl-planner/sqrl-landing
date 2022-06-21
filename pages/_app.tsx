@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app'
 import { useEffect } from 'react'
 
 import ReactGA from 'react-ga';
-ReactGA.initialize("G-T1ZHXVPSKY");
+ReactGA.initialize("process.env.GOOGLE_ANALYTICS_TRACKING_ID");
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
