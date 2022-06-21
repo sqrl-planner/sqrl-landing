@@ -446,6 +446,8 @@ const New: NextPage = () => {
                       src={isDark ? "/assets/sqrl_dark.png" : "/assets/sqrl_light.png"}
                       alt=""
                       layout="raw"
+                      width="1920"
+                      height="1080"
                     />
                   </div>
                 </div>
