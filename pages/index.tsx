@@ -14,6 +14,8 @@ import { Oval } from "react-loader-spinner"
 import HCaptcha from "@hcaptcha/react-hcaptcha"
 import Head from "next/head"
 
+import SqrlLogoWordmark from "../public/assets/logos/Sqrl logo wordmark.svg"
+
 const isEmail = (email: string) => {
   var re = /\S+@\S+\.\S+/
   return re.test(email)
@@ -75,14 +77,21 @@ const New: NextPage = () => {
     }, 7000)
   }, [done])
 
-  const [isDark, setIsDark] = useState<boolean>(false)
+  const [isDark, setIsDark] = useState<boolean>(true)
 
   useEffect(() => {
     document.querySelector("body").classList.add("dark:bg-slate-900")
     document.querySelector("body").classList.add("bg-white")
+  });
 
-    setIsDark(localStorage.getItem("theme") === "dark")
-  } );
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add('dark')
+    }
+    else {
+      document.documentElement.classList.remove('dark')
+    }
+  }, [isDark])
 
   return (
     <React.Fragment>
@@ -116,6 +125,14 @@ const New: NextPage = () => {
             Toggle loading
           </button>
 
+          <button
+            onClick={(e) => {
+              e.preventDefault()
+              setIsDark((prev) => !prev)
+            }}
+          >
+            Toggle theme
+          </button>
         </div>
       )}
       <motion.div
@@ -143,7 +160,16 @@ const New: NextPage = () => {
           <div className="pt-8 overflow-hidden sm:pt-12 lg:relative lg:py-48">
             <div className="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl lg:grid lg:grid-cols-2 lg:gap-24">
               <div>
-                <div></div>
+                <div>
+                  {/* <img
+                    className="h-24 w-auto text-transparent bg-clip-text bg-gradient-to-r from-teal-200 to-cyan-400"
+                    src="assets/logos/Sqrl logo wordmark.svg"
+                    alt="Squirrel logo"
+                  /> */}
+
+                  <SqrlLogoWordmark className="h-24 w-auto" fill={isDark ? "white" : "black"} />
+
+                </div>
                 <div className="mt-20">
                   <div className="flex flex-wrap gap-2 text-xl font-medium">
                     <motion.span
@@ -373,7 +399,7 @@ const New: NextPage = () => {
                             y={0}
                             width={4}
                             height={4}
-                            className="text-gray-200 dark:text-skate-400 dark:opacity-10"
+                            className="text-gray-200 dark:text-[#1A202C]"
                             fill="currentColor"
                           />
                         </pattern>
