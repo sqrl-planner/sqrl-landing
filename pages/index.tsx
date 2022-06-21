@@ -14,6 +14,7 @@ import Image from "next/image"
 import { Oval } from "react-loader-spinner"
 import HCaptcha from "@hcaptcha/react-hcaptcha"
 import Head from "next/head"
+import ReactGA from 'react-ga';
 
 import SqrlLogoWordmark from "../public/assets/logos/Sqrl logo wordmark.svg"
 
@@ -194,6 +195,12 @@ const New: NextPage = () => {
                         animate={{ opacity: 1 }}
                         // transition={{ delay: 1.8, duration: 0.3 }}
                         transition={{ duration: 0.5 }}
+                        onClick={() => {
+                          ReactGA.event({
+                            category: 'Index',
+                            action: 'Click contribute now'
+                          })
+                        }}
                       >
                         Contribute now
                         <div className="inline-flex flex-col relative justify-center w-3 h-3 ml-1 group-hover:translate-x-2 transition">
@@ -252,6 +259,12 @@ const New: NextPage = () => {
                                    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-400 focus:ring-offset-gray-900
                                    flex flex-row items-center justify-center h-12
                                    shadow group"
+                        onClick={() => {
+                          ReactGA.event({
+                            category: 'Index',
+                            action: 'Click try now'
+                          })
+                        }}
                       >
                         <span>Try now</span>
                         <div className="inline-flex flex-col relative justify-center w-2.5 h-2.5 ml-2 group-hover:translate-x-2 transition">
@@ -264,7 +277,13 @@ const New: NextPage = () => {
 
                     <button
                       className="font-medium flex items-center"
-                      onClick={() => setShowGetUpdates(true)}
+                      onClick={() => {
+                        setShowGetUpdates(true)
+                        ReactGA.event({
+                          category: 'Index',
+                          action: 'Show get updates'
+                        })
+                      }}
                     >
                       <span className="bg-gradient-to-r from-teal-200 to-cyan-400 text-transparent bg-clip-text
                                        border-teal-200 hover:border-b-2">
@@ -336,6 +355,12 @@ const New: NextPage = () => {
                                      focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-400 focus:ring-offset-gray-900
                                      flex flex-row items-center justify-center h-12
                                      sm:rounded-l-none not:disabled:hover:bg-tahiti-500 disabled:opacity-80 shadow"
+                          onClick={() => {
+                            ReactGA.event({
+                              category: 'Index',
+                              action: 'Click get updates'
+                            })
+                          }}
                         >
                           {loading ? (
                             <svg
