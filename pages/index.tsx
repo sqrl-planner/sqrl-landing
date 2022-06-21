@@ -420,6 +420,7 @@ const New: NextPage = () => {
                       className="w-full rounded-md shadow-xl ring-1 ring-black ring-opacity-5 lg:h-full lg:w-auto lg:max-w-none"
                       src={isDark ? "/assets/sqrl_dark.png" : "/assets/sqrl_light.png"}
                       alt=""
+                      layout="raw"
                     />
                   </div>
                 </div>
