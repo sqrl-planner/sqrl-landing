@@ -18,10 +18,12 @@ module.exports = {
           700: '#0e7490',
           800: '#155e75',
           900: '#164e63',
-        },
-        'tahiti-700-light': '#3b90ad'
+      },
+        'tahiti-700-light': '#3b90ad',
+        'tahiti-pale': '#92f5e2',
       }
     },
   },
   plugins: [iOSHeight],
+  'darkMode': 'class',
 }
