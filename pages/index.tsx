@@ -230,7 +230,7 @@ const New: NextPage = () => {
                     // transition={{ delay: 1, duration: 0.5 }}
                     transition={{ duration: 0.5 }}
                   >
-                    {"Because let's face it, Acorn is shit. A modern timetable planner for the University of Toronto."}
+                    {"Because let's face it, Acorn is meh. A modern timetable planner for the University of Toronto."}
                   </motion.p>
                 </div>
                 <div className="mt-10">
